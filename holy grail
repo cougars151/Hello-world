@@ -1,0 +1,59 @@
+import java.util.*;
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+import java.io.*;
+import java.net.URL;
+import javax.sound.sampled.*;
+public class /*UrNameHere*/ extends JFrame implements Runnable//Other implementables
+{
+Container con = getContentPane();
+Thread t = new Thread(this);
+// All variables and objects declared here.
+    public /*UrNameHere*/()
+    {
+    con.setLayout(new FlowLayout());
+    /*
+    All variables initialized here
+    All objects instantiated here
+    All Listeners added here
+    */
+    setDefaultCloseOperation(EXIT_ON_CLOSE);
+    t.start();
+    }
+    public void run()
+    {
+    try{
+        while(true)
+            {
+            t.sleep(67);//Smaller number == faster, larger == slower
+            /*
+            All motion and collision detection coded here
+            */
+            repaint();
+            }
+        }
+    catch(Exception e)
+        {
+        e.printStackTrace();
+        }
+    }
+    public void paint(Graphics gr)
+    {
+    Image i=createImage(getSize().width, getSize().height);
+    Graphics2D g = (Graphics2D)i.getGraphics();
+    //draw stuff here
+    g.dispose();
+    gr.drawImage(i, 0, 0, this);
+    }
+    public static void main(String[] args)
+    {
+    /*UrNameHere*/ frame = new /*UrNameHere*/();
+    frame.setSize(600, 620);//determines size of screen: Phillips' max is 800, 800
+    frame.setVisible(true);
+    }
+    public void update(Graphics g)
+    {
+        paint(g);
+    } 
+}
